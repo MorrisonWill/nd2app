@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "python311@latest",
+    "nodejs@latest",
+    "nodePackages.npm@latest"
+  ],
+  "shell": {
+    "init_hook": [". $VENV_DIR/bin/activate"]
+  }
+}
