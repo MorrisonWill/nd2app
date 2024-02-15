@@ -21,13 +21,15 @@ async def process_nd2_file(file_path: FilePath):
         raise HTTPException(status_code=400, detail="Invalid file path or file type.")
 
     try:
+        file_name = os.path.basename(file_path.file_path)
+        file_size = os.path.getsize(file_path.file_path)
         metadata = extract_metadata(file_path.file_path)
-        return {"metadata": metadata}
+        return {"file_name": file_name, "file_size": file_size, "metadata": metadata}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 def extract_metadata(file_path: str):
     with nd2.ND2File(file_path) as nd2_file:
-        print(nd2_file.metadata)
+        # print(nd2_file.metadata)
         return nd2_file.metadata

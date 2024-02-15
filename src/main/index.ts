@@ -43,6 +43,9 @@ function createWindow(): void {
 
   // managing python server
 
+  // For viewing dev tools
+  // mainWindow.webContents.openDevTools();
+
   mainWindow.on('close', () => {
     if (pythonServer) {
       pythonServer.kill('SIGINT')
